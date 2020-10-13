@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_fundamentals/row_column.dart';
 
 class HelloWorld extends StatelessWidget {
   @override
@@ -8,41 +7,15 @@ class HelloWorld extends StatelessWidget {
       appBar: AppBar(
         title: Text('Hello World'),
       ),
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Center(
-                child: Text(
-                  'Hello World',
-                  style: TextStyle(fontSize: 20),
-                ),
-              )
-            ],
-          ),
-          Align(
-            alignment: Alignment(0.85, 0.87),
-            child: RaisedButton(
-              child: Text(
-                'Next',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              color: Colors.lightBlue,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return RowColumn();
-                    },
-                  ),
-                );
-              },
+          Center(
+            child: Text(
+              'Hello World',
+              style: TextStyle(fontSize: 20),
             ),
-          ),
+          )
         ],
       ),
     );

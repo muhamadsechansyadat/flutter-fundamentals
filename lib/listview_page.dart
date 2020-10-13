@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_fundamentals/text_style_page.dart';
 
 class ListviewPage extends StatefulWidget {
   @override
@@ -16,83 +15,40 @@ class _ListviewPageState extends State<ListviewPage> {
       appBar: AppBar(
         title: Text('Latihan List View'),
       ),
-      body: Stack(
+      body: ListView(
         children: <Widget>[
-          ListView(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  RaisedButton(
-                    child: Text('Tambah Data'),
-                    onPressed: () {
-                      setState(() {
-                        widgets.add(Text(
-                          'Data Ke - ' + counter.toString(),
-                          style: TextStyle(
-                            fontSize: 35,
-                          ),
-                        ));
-                        counter++;
-                      });
-                    },
-                  ),
-                  RaisedButton(
-                    child: Text('Hapus Data'),
-                    onPressed: () {
-                      setState(() {
-                        widgets.removeLast();
-                        counter--;
-                      });
-                    },
-                  ),
-                ],
+              RaisedButton(
+                child: Text('Tambah Data'),
+                onPressed: () {
+                  setState(() {
+                    widgets.add(Text(
+                      'Data Ke - ' + counter.toString(),
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
+                    ));
+                    counter++;
+                  });
+                },
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: widgets,
-              )
+              RaisedButton(
+                child: Text('Hapus Data'),
+                onPressed: () {
+                  setState(() {
+                    widgets.removeLast();
+                    counter--;
+                  });
+                },
+              ),
             ],
           ),
-          Align(
-            alignment: Alignment(0.85, 0.87),
-            child: RaisedButton(
-              child: Text(
-                'Next',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              color: Colors.lightBlue,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return TextstylePage();
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-          Align(
-            alignment: Alignment(-0.85, 0.87),
-            child: RaisedButton(
-              child: Text(
-                'Back',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              color: Colors.lightBlue,
-              onPressed: () {
-                Navigator.pop(
-                  context,
-                );
-              },
-            ),
-          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: widgets,
+          )
         ],
       ),
     );
